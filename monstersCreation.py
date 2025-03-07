@@ -11,13 +11,19 @@ class monsterTypeA():
 
     def showMonsterStats(self):
         print(f"""
-        |---------------------------------------|
-        |                                       |
-        |   Vida: {self.health}                     |
-        |   Ataque: {self.attack}                   |
-        |   Defesa: {self.defense}                   |
-        |   Velocidade: {self.speed}                |
-        |   Almas: {self.souls}                      |
-        |                                       |
-        |---------------------------------------|
+
+        |  --> Vida: {self.health}
+        |  --> Ataque: {self.attack}
+        |  --> Defesa: {self.defense}
+        |  --> Velocidade: {self.speed}
+        |  --> Almas: {self.souls}
+
         """)
+
+    def monsterAttack(self):
+        print(f"""
+
+            O monstro atacou!
+          Você sofreu {self.attack} de dano!
+
+                """)

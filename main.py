@@ -46,5 +46,5 @@ def monstersCreationFunction():
     
 monsters = monstersCreationFunction()
 for monster in monsters:
-    monster.showMonsterStats()
+    monster.monsterAttack()
 print(monsters)
