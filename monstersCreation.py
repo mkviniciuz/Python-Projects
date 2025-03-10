@@ -60,7 +60,7 @@ class monsterTypeA():
                 """)
         character.health -= (self.attack - character.defense)
         print(f"""
-              
-              Vida restante: {character.health} {"♥" * int(character.health / 10)}
+              Vida restante:
+              |{"█" * int(character.health / 12)}| {character.health}/200
 
               """)

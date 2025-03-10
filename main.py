@@ -1,10 +1,9 @@
-import characterObject
 import monstersCreation
 import random
+from monstersCreation import character
+
 
 #Criação de monstros aleatorios
-
-
 def monstersCreationFunction():
     monsters = []
     for i in range(9):
@@ -21,5 +20,29 @@ def monstersCreationFunction():
     return monsters
 
 monsters = monstersCreationFunction()
-for monster in monsters:
-    monster.monsterAttack()
+
+
+def main():
+    playing = True
+    while playing:
+        try:
+            print(f"""
+                x------------------| STATUS |-------------------x
+                |     Vida                             Almas    |
+                |   |{"█" * int(character.health / 12)}| {character.health}/200   |     {character.souls}      |
+                |                                               |
+                |     Ataque            Level          Defesa   |
+                |     {character.attack}                {character.level}              {character.defense}       |
+                x-----------------------------------------------x
+
+                1 - Atacar      2 - Fugir      3 - Ver status
+                                4 - Sair 
+                """)
+                
+            of = int(input("Escolha uma opção: "))
+
+        except ValueError:
+            print("Você morreu!")
+            playing = False
+            break
+main()
