@@ -29,7 +29,7 @@ character = characterCreation() #Criação do personagem
 
 
 #Classe para criar monstros
-class monsterTypeA():
+class monsterType():
 
     def __init__(self, health, attack, defense, speed, souls):
 

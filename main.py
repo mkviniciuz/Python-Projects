@@ -1,25 +1,24 @@
 import monstersCreation
 import random
 from monstersCreation import character
+import time
 
 
 #Criação de monstros aleatorios
 def monstersCreationFunction():
-    monsters = []
-    for i in range(9):
+    for i in range(1):
 
-        health=random.randint(100,105) #Vida do monstro
-        attack=random.randint(10,15) #Ataque do monstro
-        defense=random.randint(0,1) #Defesa do monstro
-        souls=random.randint(10, 20) #Almas que o monstro dropa
+        health=random.randint(character.health - int((character.health * 20) / 100), int((character.health * 75) / 100) + character.health) #Vida do monstro baseada na vida do personagem
+        attack=random.randint(character.attack, int((character.attack * 50) / 100) + character.attack) #Ataque do monstro baseado no ataque do personagem
+        defense=random.randint(character.defense, int((character.defense * 75) / 100) + character.defense) #Defesa do monstro baseada na defesa do personagem
+        souls=random.randint(int(character.nSouls / 5), int(character.nSouls / 3)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
         speed=random.randint(1,2) #Velocidade do monstro
 
-        monster = monstersCreation.monsterTypeA(health, attack, defense, speed, souls)
-        monsters.append(monster)
+        monster = monstersCreation.monsterType(health, attack, defense, speed, souls)
 
-    return monsters
+    return monster
 
-monsters = monstersCreationFunction()
+monster = monstersCreationFunction()
 
 
 def main():
@@ -27,19 +26,31 @@ def main():
     while playing:
         try:
             print(f"""
-                x------------------| STATUS |-------------------x
-                |     Vida                             Almas    |
-                |   |{"█" * int(character.health / 12)}| {character.health}/200   |     {character.souls}      |
-                |                                               |
-                |     Ataque            Level          Defesa   |
-                |     {character.attack}                {character.level}              {character.defense}       |
-                x-----------------------------------------------x
+            x Narrador x
+            |
+            | Find your lost SOUL!
+            | This is your unique chance, {character.name}. Welcome to the Cursed Tower!
+                    """)
+            
+            time.sleep(2)
 
-                1 - Atacar      2 - Fugir      3 - Ver status
-                                4 - Sair 
-                """)
-                
-            of = int(input("Escolha uma opção: "))
+            print(f"""
+            x Narrador x
+            |
+            | You are in the first floor of the Cursed Tower, {character.name}.
+            """)
+
+            time.sleep(2)
+
+            print(f"""
+
+            x STATUS do MONSTRO!x
+            |
+            |  --> Vida: {monster.health}
+            |  --> Ataque: {monster.attack}
+            |  --> Defesa: {monster.defense}
+            |  --> Almas: {monster.souls}
+                """) #Exibir status do primeiro monstro!
 
         except ValueError:
             print("Você morreu!")

@@ -53,3 +53,15 @@ class characterObject(object):  # Inherit from object
             except ValueError:
                 print("Valor invalido")
 
+
+    def characterStatus(self):
+        print(f"""
+    x------------------| STATUS |-------------------x
+    |     Vida                             Almas    |
+    |   |{"█" * int(self.health / 12)}| {self.health}/200   |     {self.souls}      |
+    |                                               |
+    |     Ataque            Level          Defesa   |
+    |     {self.attack}                {self.level}              {self.defense}       |
+    x-----------------------------------------------x
+    """)
+
