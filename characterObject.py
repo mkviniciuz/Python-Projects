@@ -1,6 +1,6 @@
 class characterObject(object):  # Inherit from object
 
-    def __init__(self, name, health, attack, defense, speed, level, souls, gold, nSouls, distribuitonPoints):
+    def __init__(self, name, health, attack, defense, speed, level, souls, gold, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
         self.health = health #Vida do personagem
         self.attack = attack #Ataque do personagem
@@ -10,7 +10,8 @@ class characterObject(object):  # Inherit from object
         self.souls = souls #Quantidade de almas que o personagem possui
         self.gold = gold #Quantidade de ouro que o personagem possui
         self.nSouls = nSouls #Quantidade de almas necessarias para upar
-        self.distribuitonPoints = distribuitonPoints
+        self.distribuitonPoints = distribuitonPoints #Pontos de distribuição
+        self.lucky = lucky #Sorte do personagem
     
     def LevelUpgrade(self):
     

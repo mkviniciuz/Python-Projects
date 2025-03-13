@@ -20,9 +20,10 @@ def characterCreation():
     souls = 210
     gold = 0
     nSouls = 210
+    lucky = 0
     distribuitonPoints = 0
 
-    character = characterObject.characterObject(name, health, attack, defense, speed, level, souls, gold, nSouls, distribuitonPoints)
+    character = characterObject.characterObject(name, health, attack, defense, speed, level, souls, gold, nSouls, distribuitonPoints, lucky)
     return character
 
 character = characterCreation() #Criação do personagem
