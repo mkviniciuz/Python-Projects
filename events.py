@@ -46,7 +46,10 @@ def eventSouls():
 
     #Evento rank D (-30% a mais de almas necessarias)
     elif dice_roll <= 0:
-        character.souls -= int(character.nSouls - (character.nSouls * 0.30))
+        sRemove = int(character.nSouls - (character.nSouls * 0.30))
+
+        
+
         print(f"Foi sorteado um evento de azar! Você possui {character.souls} almas!")
 
 eventSouls()
