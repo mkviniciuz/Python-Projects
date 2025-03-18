@@ -1,17 +1,17 @@
-import json
-import random
+print(f"""
+    
+    > Globo Ocular <
+    |_. Você recebe +500 de VIDA MAXIMA
+    |_. Todos os Monstros recebem +30% de dano
+      
 
-# Carregar o JSON
-with open("eventMessages.json", "r", encoding="utf-8") as file:
-    data = json.load(file)
+    > Orbe lúnatico <
+    |_. Aumento de 15% de ATAQUE a cada 15 monstros derrotados
+    |_. A cada batalha, o heroi começa com -5% de VIDA
 
-# Escolher um evento aleatório
-evento = random.choice(data["eventos"])
 
-# Definir um valor para eBonus
-eBonus = random.randint(1, 10)
+    > Escudo de Videira <
+    |_. Aumento de +60% defesa baseado na defesa do monstro
+    |_. O Chefe do ROUND recebe +10% de dano.
 
-# Formatar a string com o valor de eBonus
-evento_formatado = evento.format(eBonus=eBonus)
-
-print(evento_formatado)
+""")

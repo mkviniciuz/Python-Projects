@@ -398,7 +398,10 @@ def monstersCreationFunction():
 
     return monster
 
-monster = monstersCreationFunction()
+def battleSystem(kill, floor):
+    monster = monstersCreationFunction()
+
+battleSystem()
 
 
 def main():
