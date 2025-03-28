@@ -1,5 +1,6 @@
 class characterObject(object):  # Inherit from object
 
+
     def __init__(self, name, health, attack, defense, speed, level, souls, gold, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
         self.health = health #Vida do personagem
@@ -10,8 +11,8 @@ class characterObject(object):  # Inherit from object
         self.souls = souls #Quantidade de almas que o personagem possui
         self.gold = gold #Quantidade de ouro que o personagem possui
         self.nSouls = nSouls #Quantidade de almas necessarias para upar
-        self.distribuitonPoints = distribuitonPoints #Pontos de distribuição
-        self.lucky = lucky #Sorte do personagem
+        self.distribuitonPoints = distribuitonPoints
+        self.lucky = lucky
     
     def LevelUpgrade(self):
     
@@ -54,7 +55,6 @@ class characterObject(object):  # Inherit from object
             except ValueError:
                 print("Valor invalido")
 
-
     def characterStatus(self):
         print(f"""
     x------------------| STATUS |-------------------x
@@ -66,3 +66,11 @@ class characterObject(object):  # Inherit from object
     x-----------------------------------------------x
     """)
 
+    def characterAttack(self, target):
+        print(f"""
+
+                Você atacou!
+          Você infligiu {int(self.attack - (target.defense*0.2))} de dano !
+
+                """)
+        target.health -= int((self.attack - (target.defense*0.2)))

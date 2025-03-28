@@ -385,8 +385,8 @@ def gameEvents():
 
 
 #Criação de monstros aleatorios
-def monstersCreationFunction():
-    for i in range(1):
+def monstersCreationFunction(quantity):
+    for i in range(quantity):
 
         health=random.randint(character.health - int((character.health * 20) / 100), int((character.health * 75) / 100) + character.health) #Vida do monstro baseada na vida do personagem
         attack=random.randint(character.attack, int((character.attack * 50) / 100) + character.attack) #Ataque do monstro baseado no ataque do personagem
@@ -398,8 +398,8 @@ def monstersCreationFunction():
 
     return monster
 
-def battleSystem(kill, floor):
-    monster = monstersCreationFunction()
+def battleSystem(target):
+    character.characterAttack(target)
 
 battleSystem()
 
