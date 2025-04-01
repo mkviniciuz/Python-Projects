@@ -398,8 +398,9 @@ def monstersCreationFunction(quantity):
 
     return monster
 
-def battleSystem(target):
-    character.characterAttack(target)
+def battleSystem():
+    gameEvents()
+
 
 battleSystem()
 

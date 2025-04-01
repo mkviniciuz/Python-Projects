@@ -1,7 +1,7 @@
 class characterObject(object):  # Inherit from object
 
 
-    def __init__(self, name, health, attack, defense, speed, level, souls, gold, nSouls, distribuitonPoints, lucky):
+    def __init__(self, name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
         self.health = health #Vida do personagem
         self.attack = attack #Ataque do personagem
@@ -9,7 +9,6 @@ class characterObject(object):  # Inherit from object
         self.speed = speed #Velocidade do personagem
         self.level = level #Nivel do personagem
         self.souls = souls #Quantidade de almas que o personagem possui
-        self.gold = gold #Quantidade de ouro que o personagem possui
         self.nSouls = nSouls #Quantidade de almas necessarias para upar
         self.distribuitonPoints = distribuitonPoints
         self.lucky = lucky
@@ -74,3 +73,16 @@ class characterObject(object):  # Inherit from object
 
                 """)
         target.health -= int((self.attack - (target.defense*0.2)))
+
+    def characterDefense(self):
+        self.extra_defense = self.defense*0.5
+        self.defense_turn = 2
+        self.defense += self.extra_defense
+        print(f"""
+
+                Você defendeu-se!
+          Defesa aumentada para {self.defense} DEF!
+            (Duração de {self.defense_turn} Turnos)
+
+        """)
+        

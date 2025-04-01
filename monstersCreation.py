@@ -18,12 +18,11 @@ def characterCreation():
     speed = 10
     level = 1
     souls = 210
-    gold = 0
     nSouls = 210
     lucky = 0
     distribuitonPoints = 0
 
-    character = characterObject.characterObject(name, health, attack, defense, speed, level, souls, gold, nSouls, distribuitonPoints, lucky)
+    character = characterObject.characterObject(name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
     return character
 
 character = characterCreation() #Criação do personagem
@@ -32,12 +31,11 @@ character = characterCreation() #Criação do personagem
 #Classe para criar monstros
 class monsterType():
 
-    def __init__(self, health, attack, defense, speed, souls):
+    def __init__(self, health, attack, defense, souls):
 
         self.health = health
         self.attack = attack
         self.defense = defense
-        self.speed = speed
         self.souls = souls
     
 
@@ -47,7 +45,6 @@ class monsterType():
         |  --> Vida: {self.health}
         |  --> Ataque: {self.attack}
         |  --> Defesa: {self.defense}
-        |  --> Velocidade: {self.speed}
         |  --> Almas: {self.souls}
 
         """)

@@ -15,3 +15,4 @@ print(f"""
     |_. O Chefe do ROUND recebe +10% de dano.
 
 """)
+
