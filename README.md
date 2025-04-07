@@ -11,8 +11,8 @@
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/roguesouls-ascii.git
-   cd roguesouls-ascii
+   git clone https://github.com/seu-usuario/roguesouls.git
+   cd roguesouls
    ```
 
 2. Execute o arquivo principal:
