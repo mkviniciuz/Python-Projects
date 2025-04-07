@@ -253,7 +253,7 @@ def gameEvents():
         
     def eventMonster():
 
-        with open("eventMessages.json", "r", encoding="utf-8") as file:
+        with open("data/eventMessages.json", "r", encoding="utf-8") as file:
             data = json.load(file)
 
         eventWin = random.choice(data["ganho"]) #Evento de ganho
