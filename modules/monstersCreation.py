@@ -1,33 +1,3 @@
-from modules import characterObject
-
-#Função para criar o personagem
-def characterCreation():
-
-    print("""
-          x---------------------------------------------x     
-          |                                             |
-          |      Defina um nome para seu personagem!    |
-          |                                             |
-          x---------------------------------------------x
-        """)
-
-    name = input("""   
-          --> Nome: """)
-    health = 200
-    attack = 35
-    defense = 10
-    speed = 10
-    level = 1
-    souls = 210
-    nSouls = 210
-    lucky = 0
-    distribuitonPoints = 0
-
-    character = characterObject.characterObject(name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
-    return character
-
-character = characterCreation() #Criação do personagem
-
 
 #Classe para criar monstros
 class monsterType():

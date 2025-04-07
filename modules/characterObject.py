@@ -1,8 +1,7 @@
 import random
 import time
 
-class characterObject(object):  # Inherit from object
-
+class characterObject():  # Inherit from object
 
     def __init__(self, name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
@@ -15,7 +14,7 @@ class characterObject(object):  # Inherit from object
         self.nSouls = nSouls #Quantidade de almas necessarias para upar
         self.distribuitonPoints = distribuitonPoints
         self.lucky = lucky
-    
+
     def LevelUpgrade(self):
     
         while True:    
@@ -87,7 +86,6 @@ class characterObject(object):  # Inherit from object
           (Duração de {self.defense_turn} Turnos)
         """)
     
-
     def characterExtraRemove(self):
 
         # REDUÇÃO DOS PONTOS DE DEFESA EXTRA
@@ -100,9 +98,6 @@ class characterObject(object):  # Inherit from object
                   
                   """)
             
-
-
-
     def characterActionDisplay(self, target):
         rounds = 1
         while target.health > 0:
@@ -159,4 +154,29 @@ class characterObject(object):  # Inherit from object
                 print("Algo deu errado! Tente novamente")
 
 
-                
+#Função para criar o personagem
+def characterCreation():
+    print("""
+        x---------------------------------------------x     
+        |                                             |
+        |      Defina um nome para seu personagem!    |
+        |                                             |
+        x---------------------------------------------x
+        """)
+
+    name = input("""   
+        --> Nome: """)
+    health = 200
+    attack = 35
+    defense = 10
+    speed = 10
+    level = 1
+    souls = 210
+    nSouls = 210
+    lucky = 0
+    distribuitonPoints = 0
+
+    character = characterObject(name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
+    return character
+    
+character = characterCreation() #Criação do personagem
