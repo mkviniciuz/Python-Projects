@@ -16,3 +16,7 @@ print(f"""
 
 """)
 
+
+x = -5
+
+print(max(0, x))

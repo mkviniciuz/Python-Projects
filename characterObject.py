@@ -1,3 +1,6 @@
+import random
+import time
+
 class characterObject(object):  # Inherit from object
 
 
@@ -67,10 +70,9 @@ class characterObject(object):  # Inherit from object
 
     def characterAttack(self, target):
         print(f"""
-
-                Você atacou!
-          Você infligiu {int(self.attack - (target.defense*0.2))} de dano !
-
+          [HEROI]
+          Você atacou!
+          Você infligiu {int(self.attack - (target.defense*0.2))} de dano !  | Vida do monstro |{"█"*int((target.health/10))}| {target.health}
                 """)
         target.health -= int((self.attack - (target.defense*0.2)))
 
@@ -79,10 +81,82 @@ class characterObject(object):  # Inherit from object
         self.defense_turn = 2
         self.defense += self.extra_defense
         print(f"""
-
-                Você defendeu-se!
+          [HEROI]
+          Você defendeu-se!
           Defesa aumentada para {self.defense} DEF!
-            (Duração de {self.defense_turn} Turnos)
-
+          (Duração de {self.defense_turn} Turnos)
         """)
-        
+    
+
+    def characterExtraRemove(self):
+
+        # REDUÇÃO DOS PONTOS DE DEFESA EXTRA
+        self.defense -= self.extra_defense
+        self.defense_turn -= 1
+        if self.defense_turn == 0:
+            print(f"""
+                  
+                  Pontos de DEFESA EXTRA reduzidos!
+                  
+                  """)
+            
+
+
+
+    def characterActionDisplay(self, target):
+        rounds = 1
+        while target.health > 0:
+            print(f"""
+          x-----------| SUA VEZ |---------------x
+          |                                     |
+          | [1] Atacar          [2] Defender-se |
+          |                                     |
+          | [3] Seu status   [4] Status inimigo |
+          |                                     |
+          x-------------------------------------x
+""")
+            try:
+                action = int(input(f"""
+          Escolha a opção: """))
+
+                if action == 1:
+                    self.characterAttack(target)
+                    rounds += 1
+                    time.sleep(2)
+
+                elif action == 2:
+                    self.characterDefense()
+                    rounds += 1
+                    time.sleep(2)
+
+                elif action == 3:
+                    self.characterStatus()
+                    time.sleep(2)
+                
+                elif action == 4:
+                    target.showMonsterStats()
+                    time.sleep(2)
+
+
+                else:
+                    print("Você digitou um valor inválido! Tente novamente.")
+                
+
+                if (rounds % 2) == 0:
+                    monster_action = [target.monsterAttack, target.monsterDefense]
+                    sorted_action = random.choice(monster_action)
+                    sorted_action()
+                    rounds += 1
+                    time.sleep(2)
+                
+                else:
+                    print("Sua vez!")
+                    time.sleep(2)
+
+
+
+            except ValueError:
+                print("Algo deu errado! Tente novamente")
+
+
+                

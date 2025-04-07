@@ -20,11 +20,9 @@ def gameEvents():
             
             eBonus = int(character.nSouls + (character.nSouls * 1)) #Calculo de almas ganhas
             print(f"""
-
-            x EVENTO DE SORTE x (RANK S)     
-            |     
-            |   Você recebeu {eBonus} almas!
-                
+          x EVENTO DE SORTE x (RANK S)     
+          |     
+          |   Você recebeu {eBonus} almas!
                 """) #Mensagem de evento de sorte
             character.souls += eBonus #Adiciona as almas ganhas ao personagem
             return character.souls
@@ -34,11 +32,9 @@ def gameEvents():
         elif dice_roll >= 15:
             eBonus = int(character.nSouls + (character.nSouls * 0.75)) #Calculo de almas ganhas
             print(f"""
-
-            x EVENTO DE SORTE x (RANK A)    
-            |     
-            |   Você recebeu {eBonus} almas!
-                
+          x EVENTO DE SORTE x (RANK A)    
+          |     
+          |   Você recebeu {eBonus} almas!
                 """) #Mensagem de evento de sorte
             character.souls += eBonus #Adiciona as almas ganhas ao personagem
             return character.souls
@@ -47,11 +43,9 @@ def gameEvents():
         elif dice_roll >= 13:
             eBonus = int(character.nSouls + (character.nSouls * 0.50)) #Calculo de almas ganhas
             print(f"""
-
-            x EVENTO DE SORTE x (RANK B)  
-            |     
-            |   Você recebeu {eBonus} almas!
-                
+          x EVENTO DE SORTE x (RANK B)  
+          |     
+          |   Você recebeu {eBonus} almas!
                 """) #Mensagem de evento de sorte
             character.souls += eBonus #Adiciona as almas ganhas ao personagem
             return character.souls
@@ -60,11 +54,9 @@ def gameEvents():
         elif dice_roll >= 10:
             eBonus = int(character.nSouls + (character.nSouls * 0.25))
             print(f"""
-
-            x EVENTO DE SORTE x (RANK C)
-            |     
-            |   Você recebeu {eBonus} almas!
-                
+          x EVENTO DE SORTE x (RANK C)
+          |     
+          |   Você recebeu {eBonus} almas!
                 """)
             character.souls += eBonus #Adiciona as almas ganhas ao personagem
             return character.souls
@@ -73,11 +65,9 @@ def gameEvents():
         elif dice_roll <= 5:
             eBonus = int(character.nSouls + (character.nSouls * 0.15)) #Calculo de almas perdidas
             print(f"""
-
-            x EVENTO DE AZAR x (RANK D)
-            |     
-            |   Você recebeu {eBonus} almas!
-                
+          x EVENTO DE AZAR x (RANK D)
+          |     
+          |   Você recebeu {eBonus} almas!
                 """) #Mensagem de evento de azar
             character.souls -= eBonus #Remove as almas ganhas ao personagem
             return character.souls
@@ -87,22 +77,18 @@ def gameEvents():
 
             eBonus = int(character.nSouls + (character.nSouls * 0.15)) #Calculo de almas perdidas
             print(f"""
-
-            x EVENTO DE AZAR x (RANK E)
-            |     
-            |   Você perdeu {eBonus} almas!
-                
+          x EVENTO DE AZAR x (RANK E)
+          |     
+          |   Você perdeu {eBonus} almas!
                 """) #Mensagem de evento de azar
             character.souls -= eBonus #Remove as almas ganhas ao personagem
             return character.souls
         
         else:
             print(f"""
-
-            x EVENTO DE SORTE x (RANK F)
-            |
-            |   Nada aconteceu!
-                
+          x EVENTO DE SORTE x (RANK F)
+          |
+          |   Nada aconteceu!
                 """) #Mensagem de evento de sorte
             character.souls += 0 #Adiciona as almas ganhas ao personagem
             return character.souls
@@ -121,11 +107,9 @@ def gameEvents():
             if dice_roll >= 20: 
                 eBonus = int(10 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.attack += eBonus #Adiciona o bonus ao status
                 return character.attack
@@ -134,11 +118,9 @@ def gameEvents():
             elif dice_roll >= 15 and dice_roll < 20: 
                 eBonus = int(5 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.attack += eBonus #Adiciona o bonus ao status
                 return character.attack
@@ -147,12 +129,10 @@ def gameEvents():
             elif dice_roll < 15:
 
                 eBonus = int(2.5 * (character.health / 100)) #Calculo de bonus
-                print(f"""
-                                                                                                            
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+                print(f"""                                                                                
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.attack += eBonus #Adiciona o bonus ao status
                 return character.attack
@@ -162,11 +142,9 @@ def gameEvents():
             if dice_roll >= 20: 
                 eBonus = int(10 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.defense += eBonus #Adiciona o bonus ao status
                 return character.defense
@@ -175,11 +153,9 @@ def gameEvents():
             elif dice_roll >= 15 and dice_roll < 20: 
                 eBonus = int(5 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.defense += eBonus #Adiciona o bonus ao status
                 return character.defense
@@ -188,12 +164,10 @@ def gameEvents():
             elif dice_roll < 15:
 
                 eBonus = int(2.5 * (character.health / 100)) #Calculo de bonus
-                print(f"""
-                                                                                                            
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+                print(f"""                                                                           
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.defense += eBonus #Adiciona o bonus ao status
                 return character.defense
@@ -203,11 +177,9 @@ def gameEvents():
             if dice_roll >= 20: 
                 eBonus = int(10 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.lucky += eBonus #Adiciona o bonus ao status
                 return character.lucky
@@ -216,11 +188,9 @@ def gameEvents():
             elif dice_roll >= 15 and dice_roll < 20: 
                 eBonus = int(5 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.lucky += eBonus #Adiciona o bonus ao status
                 return character.lucky
@@ -229,12 +199,10 @@ def gameEvents():
             elif dice_roll < 15:
 
                 eBonus = int(2.5 * (character.health / 100)) #Calculo de bonus
-                print(f"""
-                                                                                                            
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+                print(f"""                                                                                  
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.lucky += eBonus #Adiciona o bonus ao status
                 return character.lucky
@@ -244,11 +212,9 @@ def gameEvents():
             if dice_roll >= 20: 
                 eBonus = int(10 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.health += eBonus #Adiciona o bonus ao status
                 return character.health
@@ -257,11 +223,9 @@ def gameEvents():
             elif dice_roll >= 15 and dice_roll < 20: 
                 eBonus = int(5 * (character.health / 100)) #Calculo de bonus
                 print(f"""
-
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!  
                     """)
                 character.health += eBonus #Adiciona o bonus ao status
                 return character.health
@@ -270,23 +234,19 @@ def gameEvents():
             elif dice_roll < 15:
 
                 eBonus = int(2.5 * (character.health / 100)) #Calculo de bonus
-                print(f"""
-                                                                                                            
-                x EVENTO DE STATUS x
-                |     
-                |   O status {selectedStatus} aumentou em {eBonus}!
-                    
+                print(f"""                                                                                   
+          x EVENTO DE STATUS x
+          |     
+          |   O status {selectedStatus} aumentou em {eBonus}!
                     """)
                 character.health += eBonus #Adiciona o bonus ao status
                 return character.health
             
         else:
             print(f"""
-
-            x EVENTO DE SORTE x
-            |
-            |   Nada aconteceu!
-                
+          x EVENTO DE SORTE x
+          |
+          |   Nada aconteceu!
                 """) #Mensagem de evento de sorte
             character.souls += 0 #Adiciona as almas ganhas ao personagem
             return character.souls
@@ -313,33 +273,27 @@ def gameEvents():
             if eStatus == "VIDA":
                 monster.health += eBonus
                 print(f"""
-
-                x EVENTO DE MONSTRO x
-                |
-                |    {final_event}
-
+          x EVENTO DE MONSTRO x
+          |
+          |    {final_event}
                     """)
                 return monster.health
                 
             elif eStatus == "ATAQUE":
                 monster.attack += eBonus
                 print(f"""
-
-                x EVENTO DE MONSTRO x
-                |
-                |    {final_event}
-
+          x EVENTO DE MONSTRO x
+          |
+          |    {final_event}
                     """)
                 return monster.attack
             
             elif eStatus == "DEFESA":
                 monster.defense += eBonus
                 print(f"""
-
-                x EVENTO DE MONSTRO x
-                |
-                |    {final_event}
-
+          x EVENTO DE MONSTRO x
+          |
+          |    {final_event}
                     """)
                 return monster.defense
 
@@ -347,35 +301,29 @@ def gameEvents():
         elif selectedEvent == eventLose:
 
             if eStatus == "VIDA":
-                monster.health -= eBonus
+                monster.health = max(0, monster.health - eBonus)
                 print(f"""
-
-                x EVENTO DE MONSTRO x
-                |
-                |    {final_event}
-
+          x EVENTO DE MONSTRO x
+          |
+          |    {final_event}
                     """)
                 return monster.health
                 
             elif eStatus == "ATAQUE":
-                monster.attack -= eBonus
+                monster.attack = max(0, monster.attack - eBonus)
                 print(f"""
-
-                x EVENTO DE MONSTRO x
-                |
-                |    {final_event}
-
+          x EVENTO DE MONSTRO x
+          |
+          |    {final_event}
                     """)
                 return monster.attack
             
             elif eStatus == "DEFESA":
-                monster.defense -= eBonus
+                monster.defense = max(0, monster.defense - eBonus)
                 print(f"""
-
-                x EVENTO DE MONSTRO x
-                |
-                |    {final_event}
-
+          x EVENTO DE MONSTRO x
+          |
+          |    {final_event}
                     """)
                 return monster.defense
                     
@@ -392,14 +340,18 @@ def monstersCreationFunction(quantity):
         attack=random.randint(character.attack, int((character.attack * 50) / 100) + character.attack) #Ataque do monstro baseado no ataque do personagem
         defense=random.randint(character.defense, int((character.defense * 75) / 100) + character.defense) #Defesa do monstro baseada na defesa do personagem
         souls=random.randint(int(character.nSouls / 5), int(character.nSouls / 3)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
-        speed=random.randint(1,2) #Velocidade do monstro
+        extra_defense = 0
+        defense_turn = 0
 
-        monster = monstersCreation.monsterType(health, attack, defense, speed, souls)
+        monster = monstersCreation.monsterType(health, attack, defense, souls, extra_defense, defense_turn)
 
     return monster
 
+monster = monstersCreationFunction(1)
+
 def battleSystem():
     gameEvents()
+    character.characterActionDisplay(monster)
 
 
 battleSystem()
@@ -432,4 +384,3 @@ def main():
             print("Você morreu!")
             playing = False
             break
-main()
