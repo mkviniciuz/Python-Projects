@@ -1,4 +1,4 @@
-import characterObject
+from modules import characterObject
 
 #Função para criar o personagem
 def characterCreation():

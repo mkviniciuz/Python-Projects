@@ -1,7 +1,7 @@
 import json
-import monstersCreation
+from modules import monstersCreation
+from modules.monstersCreation import character
 import random
-from monstersCreation import character
 import time
 
 
