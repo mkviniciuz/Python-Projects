@@ -21,18 +21,18 @@ class monsterType():
           |  --> Almas: {self.souls}
         """)
 
-    def monsterAttack(self):
+    def monsterAttack(self, target):
         print(f"""
           [MONSTRO]
           O monstro atacou!
-          Você sofreu {max(0, self.attack - character.defense)} de dano  ({self.attack} Dano base - {character.defense} Sua DEF)! | Sua vida |{"█"*int((character.health/10))}| {character.health}
+          Você sofreu {max(0, self.attack - target.defense)} de dano  ({self.attack} Dano base - {target.defense} Sua DEF)! | Sua vida |{"█"*int((target.health/10))}| {target.health}
                 """)
-        character.health -= max(0, self.attack - character.defense)
+        target.health -= max(0, self.attack - target.defense)
         if self.defense_turn > 0:
             self.monsterExtraRemoves()
         
 
-    def monsterDefense(self):
+    def monsterDefense(self, target):
 
         if self.defense_turn > 0:
             self.monsterAttack()

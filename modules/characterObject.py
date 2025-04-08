@@ -1,7 +1,7 @@
 import random
 import time
 
-class characterObject():  # Inherit from object
+class CharacterObject():
 
     def __init__(self, name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
@@ -15,7 +15,7 @@ class characterObject():  # Inherit from object
         self.distribuitonPoints = distribuitonPoints
         self.lucky = lucky
 
-    def LevelUpgrade(self):
+    def level_upgrade(self):
     
         while True:    
             try:
@@ -56,7 +56,7 @@ class characterObject():  # Inherit from object
             except ValueError:
                 print("Valor invalido")
 
-    def characterStatus(self):
+    def show_status(self):
         print(f"""
     x------------------| STATUS |-------------------x
     |     Vida                             Almas    |
@@ -67,7 +67,7 @@ class characterObject():  # Inherit from object
     x-----------------------------------------------x
     """)
 
-    def characterAttack(self, target):
+    def action_attack(self, target):
         print(f"""
           [HEROI]
           Você atacou!
@@ -75,7 +75,7 @@ class characterObject():  # Inherit from object
                 """)
         target.health -= int((self.attack - (target.defense*0.2)))
 
-    def characterDefense(self):
+    def action_defense(self):
         self.extra_defense = self.defense*0.5
         self.defense_turn = 2
         self.defense += self.extra_defense
@@ -86,7 +86,7 @@ class characterObject():  # Inherit from object
           (Duração de {self.defense_turn} Turnos)
         """)
     
-    def characterExtraRemove(self):
+    def extra_remove(self):
 
         # REDUÇÃO DOS PONTOS DE DEFESA EXTRA
         self.defense -= self.extra_defense
@@ -98,7 +98,7 @@ class characterObject():  # Inherit from object
                   
                   """)
             
-    def characterActionDisplay(self, target):
+    def action_display(self, target):
         rounds = 1
         while target.health > 0:
             print(f"""
@@ -115,19 +115,19 @@ class characterObject():  # Inherit from object
           Escolha a opção: """))
 
                 if action == 1:
-                    self.characterAttack(target)
+                    self.action_attack(target)
                     rounds += 1
                     time.sleep(2)
 
                 elif action == 2:
-                    self.characterDefense()
+                    self.action_defense()
                     rounds += 1
                     time.sleep(2)
 
                 elif action == 3:
-                    self.characterStatus()
+                    self.show_status()
                     time.sleep(2)
-                
+
                 elif action == 4:
                     target.showMonsterStats()
                     time.sleep(2)
@@ -140,7 +140,7 @@ class characterObject():  # Inherit from object
                 if (rounds % 2) == 0:
                     monster_action = [target.monsterAttack, target.monsterDefense]
                     sorted_action = random.choice(monster_action)
-                    sorted_action()
+                    sorted_action(self)
                     rounds += 1
                     time.sleep(2)
                 
@@ -148,11 +148,14 @@ class characterObject():  # Inherit from object
                     print("Sua vez!")
                     time.sleep(2)
 
-
-
             except ValueError:
                 print("Algo deu errado! Tente novamente")
-
+            
+        print(f"""
+          [PARABENS!]
+          Você derrotou o monstro!
+          {target.souls} almas foram obtidas.
+        """)
 
 #Função para criar o personagem
 def characterCreation():
@@ -176,7 +179,6 @@ def characterCreation():
     lucky = 0
     distribuitonPoints = 0
 
-    character = characterObject(name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
+    character = CharacterObject(name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
     return character
     
-character = characterCreation() #Criação do personagem

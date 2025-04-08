@@ -1,6 +1,6 @@
 import json
 from modules import monstersCreation
-from modules.monstersCreation import character
+from modules import CharacterObject
 import random
 import time
 
@@ -347,11 +347,12 @@ def monstersCreationFunction(quantity):
 
     return monster
 
+character = CharacterObject.characterCreation()
 monster = monstersCreationFunction(1)
 
 def battleSystem():
     gameEvents()
-    character.characterActionDisplay(monster)
+    character.action_display(monster)
 
 
 battleSystem()
