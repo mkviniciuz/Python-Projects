@@ -1,11 +1,12 @@
 import random
-import time
+import os
 
 class CharacterObject():
 
-    def __init__(self, name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky):
+    def __init__(self, name, maxhealth, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
-        self.health = health #Vida do personagem
+        self.maxhealth = maxhealth #Vida maxima do personagem
+        self.actual_health = maxhealth
         self.attack = attack #Ataque do personagem
         self.defense = defense #Defesa do personagem
         self.speed = speed #Velocidade do personagem
@@ -14,6 +15,8 @@ class CharacterObject():
         self.nSouls = nSouls #Quantidade de almas necessarias para upar
         self.distribuitonPoints = distribuitonPoints
         self.lucky = lucky
+        self.extra_defense = 0
+        self.defense_turn = 0
 
     def level_upgrade(self):
     
@@ -57,23 +60,36 @@ class CharacterObject():
                 print("Valor invalido")
 
     def show_status(self):
+
+        bar = int((self.actual_health / self.maxhealth) * 20)
         print(f"""
-    x------------------| STATUS |-------------------x
-    |     Vida                             Almas    |
-    |   |{"█" * int(self.health / 12)}| {self.health}/200   |     {self.souls}      |
-    |                                               |
-    |     Ataque            Level          Defesa   |
-    |     {self.attack}                {self.level}              {self.defense}       |
-    x-----------------------------------------------x
-    """)
+      +{'='*38}+
+      |       x STATUS DO PERSONAGEM x       |
+      +{'='*38}+
+      \______________________________________/
+        Nome: {self.name:<30}
+        Nível: {self.level:<28}
+        HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
+        Ataque: {self.attack:<27}
+        Defesa: {self.defense:<27}
+        Sorte: {self.lucky:<29}
+        Almas: {self.souls:<29}
+        Almas Necessarias: {self.nSouls:<16}
+        Pontos para Distribuir: {self.distribuitonPoints:<10}
+      +{'='*38}+
+""")
+        sleeper = input("")
+        os.system('cls')
 
     def action_attack(self, target):
+        target.actual_health -= int((self.attack - (target.defense*0.2)))
         print(f"""
           [HEROI]
           Você atacou!
-          Você infligiu {int(self.attack - (target.defense*0.2))} de dano !  | Vida do monstro |{"█"*int((target.health/10))}| {target.health}
+          Você infligiu {int(self.attack - (target.defense*0.2))} de dano !  |
                 """)
-        target.health -= int((self.attack - (target.defense*0.2)))
+        sleeper = input("")
+        os.system('cls')
 
     def action_defense(self):
         self.extra_defense = self.defense*0.5
@@ -85,6 +101,8 @@ class CharacterObject():
           Defesa aumentada para {self.defense} DEF!
           (Duração de {self.defense_turn} Turnos)
         """)
+        sleeper = input("")
+        os.system('cls')
     
     def extra_remove(self):
 
@@ -100,62 +118,69 @@ class CharacterObject():
             
     def action_display(self, target):
         rounds = 1
-        while target.health > 0:
-            print(f"""
-          x-----------| SUA VEZ |---------------x
-          |                                     |
-          | [1] Atacar          [2] Defender-se |
-          |                                     |
-          | [3] Seu status   [4] Status inimigo |
-          |                                     |
-          x-------------------------------------x
-""")
+        while target.actual_health > 0:
             try:
-                action = int(input(f"""
-          Escolha a opção: """))
-
-                if action == 1:
-                    self.action_attack(target)
-                    rounds += 1
-                    time.sleep(2)
-
-                elif action == 2:
-                    self.action_defense()
-                    rounds += 1
-                    time.sleep(2)
-
-                elif action == 3:
-                    self.show_status()
-                    time.sleep(2)
-
-                elif action == 4:
-                    target.showMonsterStats()
-                    time.sleep(2)
-
-
-                else:
-                    print("Você digitou um valor inválido! Tente novamente.")
-                
-
                 if (rounds % 2) == 0:
                     monster_action = [target.monsterAttack, target.monsterDefense]
                     sorted_action = random.choice(monster_action)
                     sorted_action(self)
                     rounds += 1
-                    time.sleep(2)
                 
                 else:
-                    print("Sua vez!")
-                    time.sleep(2)
+                    print("...")
+
+
+                print(f"""
+            +{'='*38}+
+            |          x PAINEL DE AÇÃO x          |
+            +{'='*38}+
+            \______________________________________/ 
+
+                [1] Atacar          
+                [2] Defender-se
+
+                [3] SEUS STATUS
+                [4] STATUS INIMIGO
+                
+            +======================================+
+""")
+                action = int(input(f"""
+          Escolha a opção: """))
+                os.system('cls')
+
+                if action == 1:
+                    self.action_attack(target)
+                    rounds += 1
+
+                elif action == 2:
+                    self.action_defense()
+                    rounds += 1
+
+                elif action == 3:
+                    self.show_status()
+
+                elif action == 4:
+                    target.showMonsterStats()
+
+
+                else:
+                    print("Você digitou um valor inválido! Tente novamente.")
+                    sleeper = input("")
+                    os.system('cls')
 
             except ValueError:
                 print("Algo deu errado! Tente novamente")
+                sleeper = input("")
+                os.system('cls')
             
         print(f"""
           [PARABENS!]
           Você derrotou o monstro!
           {target.souls} almas foram obtidas.
         """)
+        self.souls += target.souls
+        sleeper = input("")
+        os.system('cls')
 
 #Função para criar o personagem
 def characterCreation():
@@ -169,7 +194,7 @@ def characterCreation():
 
     name = input("""   
         --> Nome: """)
-    health = 200
+    maxhealth = 200
     attack = 35
     defense = 10
     speed = 10
@@ -179,6 +204,7 @@ def characterCreation():
     lucky = 0
     distribuitonPoints = 0
 
-    character = CharacterObject(name, health, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
+    character = CharacterObject(name, maxhealth, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
+    os.system('cls')
     return character
     

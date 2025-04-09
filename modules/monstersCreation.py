@@ -1,10 +1,13 @@
+import os
+
 
 #Classe para criar monstros
 class monsterType():
 
-    def __init__(self, health, attack, defense, souls, extra_defense, defense_turn):
+    def __init__(self, maxhealth, attack, defense, souls, extra_defense, defense_turn):
 
-        self.health = health
+        self.maxhealth = maxhealth
+        self.actual_health = maxhealth
         self.attack = attack
         self.defense = defense
         self.souls = souls
@@ -13,29 +16,39 @@ class monsterType():
     
 
     def showMonsterStats(self):
+        bar = int((self.actual_health / self.maxhealth) * 20)
         print(f"""
-          x-------| STATUS MONSTRO
-          |  --> Vida: {self.health}
-          |  --> Ataque: {self.attack}
-          |  --> Defesa: {self.defense} +[{self.extra_defense}] EXTRA DEF | Acaba em [{self.defense_turn}] Turnos
-          |  --> Almas: {self.souls}
-        """)
+      +{'='*38}+
+      |         x STATUS DO MONSTRO x        |
+      +{'='*38}+
+      \______________________________________/
+
+        HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
+        Ataque: {self.attack:<27}
+        Defesa: {self.defense:<27}
+        Almas: {self.souls:<29}
+      +{'='*38}+
+""")
+        sleeper = input("")
+        os.system('cls')
 
     def monsterAttack(self, target):
+        target.actual_health -= max(0, self.attack - target.defense)
         print(f"""
           [MONSTRO]
           O monstro atacou!
-          Você sofreu {max(0, self.attack - target.defense)} de dano  ({self.attack} Dano base - {target.defense} Sua DEF)! | Sua vida |{"█"*int((target.health/10))}| {target.health}
+          Você sofreu {max(0, self.attack - target.defense)} de dano  ({self.attack} Dano base - {target.defense} Sua DEF)! | Sua vida |{"█"*int((target.actual_health/10))}| {target.actual_health}/{target.maxhealth}
                 """)
-        target.health -= max(0, self.attack - target.defense)
         if self.defense_turn > 0:
             self.monsterExtraRemoves()
+        sleeper = input("")
+        os.system('cls')
         
 
     def monsterDefense(self, target):
 
         if self.defense_turn > 0:
-            self.monsterAttack()
+            self.monsterAttack(target)
         
         else:
             self.extra_defense = self.defense*0.5
@@ -47,6 +60,8 @@ class monsterType():
           Defesa aumentada para {self.defense} DEF!
           (Duração de {self.defense_turn} Turnos)
             """)
+            sleeper = input("")
+            os.system('cls')
     
     def monsterExtraRemoves(self):
 
