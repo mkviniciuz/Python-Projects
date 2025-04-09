@@ -67,15 +67,15 @@ class CharacterObject():
       |       x STATUS DO PERSONAGEM x       |
       +{'='*38}+
       \______________________________________/
-        Nome: {self.name:<30}
-        Nível: {self.level:<28}
-        HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
-        Ataque: {self.attack:<27}
-        Defesa: {self.defense:<27}
-        Sorte: {self.lucky:<29}
-        Almas: {self.souls:<29}
-        Almas Necessarias: {self.nSouls:<16}
-        Pontos para Distribuir: {self.distribuitonPoints:<10}
+            Nome: {self.name:<30}
+        ⭐ Nível: {self.level:<28}
+        ❤️  HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
+        ⚔️  Ataque: {self.attack:<27}
+        🛡️  Defesa: {self.defense:<27}
+        🍀 Sorte: {self.lucky:<29}
+        👻 Almas: {self.souls:<29}
+            Almas Necessarias: {self.nSouls:<16}
+            Pontos para Distribuir: {self.distribuitonPoints:<10}
       +{'='*38}+
 """)
         sleeper = input("")

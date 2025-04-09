@@ -23,10 +23,10 @@ class monsterType():
       +{'='*38}+
       \______________________________________/
 
-        HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
-        Ataque: {self.attack:<27}
-        Defesa: {self.defense:<27}
-        Almas: {self.souls:<29}
+      🖤 HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
+      ⚔️  Ataque: {self.attack:<27}
+      🛡️  Defesa: {self.defense:<27}
+      👻 Almas: {self.souls:<29}
       +{'='*38}+
 """)
         sleeper = input("")
