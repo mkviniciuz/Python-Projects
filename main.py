@@ -3,7 +3,9 @@ from modules import monstersCreation
 from modules import characterObject
 import random
 import time
+import os
 
+os.system('cls')
 
 
 def gameEvents(target, enemy):
