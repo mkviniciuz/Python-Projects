@@ -352,6 +352,17 @@ def basicMonster(target):
     monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn)
     return monster
 
+def MediumMonster(target):
+    maxhealth=random.randint(int(target.maxhealth * 2), int(target.maxhealth * 2.5)) #Vida do monstro baseada na vida do personagem
+    attack=random.randint(int(target.attack * 0.65), int(target.attack * 0.90)) #Ataque do monstro baseado no ataque do personagem
+    defense=random.randint(int(target.defense * 0.6), int(target.defense * 0.8)) #Defesa do monstro baseada na defesa do personagem
+    souls=random.randint(target.nSouls, (target.nSouls * 2)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
+    extra_defense = 0
+    defense_turn = 0
+
+    monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn)
+    return monster
+
 
 def battleSystem():
 
@@ -377,7 +388,12 @@ def battleSystem():
             tower_level += 1
 
         if tower_level == semigod_level:
-            monster = basicMonster(character)
+            print(f"""
+          [EVENTO]
+          Um monstro nivel SEMI-DEUS apareceu!
+          enfrete-o e receba suas recompensas
+""")
+            monster = MediumMonster(character)
             gameEvents(character, monster)
             character.action_display(monster)
             tower_level += 1

@@ -83,11 +83,16 @@ class CharacterObject():
 
     def action_attack(self, target):
         target.actual_health -= int((self.attack - (target.defense*0.2)))
+        bar = int((target.actual_health / target.maxhealth) * 20)
         print(f"""
           [HEROI]
           Você atacou!
-          Você infligiu {int(self.attack - (target.defense*0.2))} de dano !  |
-                """)
+          Você infligiu 🗡️  {int(self.attack - (target.defense*0.2))} de dano!
+          
+          Vida do monstro:
+          [{'█' * bar}{'░' * (20 - bar)}] {target.actual_health}/{target.maxhealth}
+                
+                  """)
         sleeper = input("")
         os.system('cls')
 
