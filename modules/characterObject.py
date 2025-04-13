@@ -1,22 +1,27 @@
 import random
 import os
+import time
 
 class CharacterObject():
 
-    def __init__(self, name, maxhealth, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky):
+    def __init__(self, name, maxhealth, attack, defense, level, souls, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
         self.maxhealth = maxhealth #Vida maxima do personagem
         self.actual_health = maxhealth
         self.attack = attack #Ataque do personagem
         self.defense = defense #Defesa do personagem
-        self.speed = speed #Velocidade do personagem
         self.level = level #Nivel do personagem
         self.souls = souls #Quantidade de almas que o personagem possui
         self.nSouls = nSouls #Quantidade de almas necessarias para upar
         self.distribuitonPoints = distribuitonPoints
         self.lucky = lucky
+
+
+
+
         self.extra_defense = 0
         self.defense_turn = 0
+        self.eventHistory = []
 
     def level_upgrade(self):
     
@@ -50,33 +55,41 @@ class CharacterObject():
                         Você precisa de {int(self.nSouls)} almas para upar!
                         Você possui {self.distribuitonPoints} pontos de distribuição
                         """) 
-                        break
+                        continue
 
 
                     else:
                         print("Você não possui almas suficientes para upar!")
+                        break
 
             except ValueError:
                 print("Valor invalido")
 
-    def show_status(self):
-
+    def show_status(self, actual_event, kills):
+        color = "\033[91m" if self.actual_health < self.maxhealth * 0.3 else "\033[92m"
         bar = int((self.actual_health / self.maxhealth) * 20)
         print(f"""
       +{'='*38}+
       |       x STATUS DO PERSONAGEM x       |
       +{'='*38}+
       \______________________________________/
-            Nome: {self.name:<30}
-        ⭐ Nível: {self.level:<28}
-        ❤️  HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
-        ⚔️  Ataque: {self.attack:<27}
-        🛡️  Defesa: {self.defense:<27}
-        🍀 Sorte: {self.lucky:<29}
-        👻 Almas: {self.souls:<29}
-            Almas Necessarias: {self.nSouls:<16}
-            Pontos para Distribuir: {self.distribuitonPoints:<10}
+
+        Nome: {self.name}
+
+        ⭐ Nível: {self.level}
+        ❤️  HP: {color}{'█' * bar}{'_' * (20 - bar)}\033[0m {self.actual_health}/{self.maxhealth}
+        ⚔️  Ataque: {self.attack}
+        🛡️  Defesa: {self.defense}
+        🍀 Sorte: {self.lucky}
+        👻 Almas: {int(self.souls)}
+
+        Almas Necessarias: {int(self.nSouls)}
+        Pontos para Distribuir: {self.distribuitonPoints}
+
+        \033[91mMonstros derrotados:\033[0m  \033[31m{kills}\033[0m
       +{'='*38}+
+
+      {actual_event}
 """)
         sleeper = input("")
         os.system('cls')
@@ -90,7 +103,7 @@ class CharacterObject():
           Você infligiu 🗡️  {int(self.attack - (target.defense*0.2))} de dano!
           
           Vida do monstro:
-          [{'█' * bar}{'░' * (20 - bar)}] {target.actual_health}/{target.maxhealth}
+          [{'█' * bar}{'_' * (20 - bar)}] {target.actual_health}/{target.maxhealth}
                 
                   """)
         sleeper = input("")
@@ -121,7 +134,7 @@ class CharacterObject():
                   
                   """)
             
-    def action_display(self, target):
+    def action_display(self, target, actual_event, kills):
         rounds = 1
         while target.actual_health > 0:
             try:
@@ -141,11 +154,13 @@ class CharacterObject():
             +{'='*38}+
             \______________________________________/ 
 
-                [1] Atacar          
-                [2] Defender-se
+              [1] Atacar          [5] Historico
+              [2] Defender-se         de Eventos
 
-                [3] SEUS STATUS
-                [4] STATUS INIMIGO
+              [3] Status          [6] Sair
+                        
+              [4] Status | MONSTRO
+
                 
             +======================================+
 """)
@@ -162,10 +177,13 @@ class CharacterObject():
                     rounds += 1
 
                 elif action == 3:
-                    self.show_status()
+                    self.show_status(actual_event, kills)
 
                 elif action == 4:
                     target.showMonsterStats()
+                
+                elif action == 5:
+                    self.showEventHistory()
 
 
                 else:
@@ -179,22 +197,78 @@ class CharacterObject():
                 os.system('cls')
             
         print(f"""
-          [PARABENS!]
+          \033[92m[PARABENS!]\033[0m
           Você derrotou o monstro!
-          {target.souls} almas foram obtidas.
+          \033[97m{target.souls}\033[0m almas foram obtidas.
         """)
+        self.eventHistory.append(actual_event)
         self.souls += target.souls
         sleeper = input("")
         os.system('cls')
 
+    def showEventHistory(self):
+        print(f"""
+            +{'='*38}+
+            |       x HISTORICO de EVENTOS x       |
+            +{'='*38}+
+            \______________________________________/ """)
+        position = 1
+        for _ in self.eventHistory:
+            print(f"""
+            [{position}º] Acontecimento""")
+            position +=1
+            print(_)
+        sleeper = input("")
+        os.system('cls')
+
+
 #Função para criar o personagem
 def characterCreation():
     print("""
-        x---------------------------------------------x     
-        |                                             |
-        |      Defina um nome para seu personagem!    |
-        |                                             |
-        x---------------------------------------------x
+
+        SEJA
+
+""")
+    time.sleep(0.3)
+    os.system('cls')
+    print("""
+
+        SEJA BEM
+
+""")
+    time.sleep(0.6)
+    os.system('cls')
+    print("""
+
+        SEJA BEM VINDO
+
+""")
+    time.sleep(2)
+    os.system('cls')
+    print("""
+
+              A
+
+""")
+    time.sleep(2)
+    os.system('cls')
+    print("""
+        ______                                        _     
+        | ___ \                                      | |    
+        | |_/ /___   __ _ _   _  ___  ___  ___  _   _| |___ 
+        |    // _ \ / _` | | | |/ _ \/ __|/ _ \| | | | / __|
+        | |\ \ (_) | (_| | |_| |  __/\__ \ (_) | |_| | \__ \ 
+        \_| \_\___/ \__, |\__,_|\___||___/\___/ \__,_|_|___/
+                    __/  |                                  
+                    |___/
+          """)
+    time.sleep(3)
+    os.system('cls')
+    print(f"""
+        +{'='*38}+
+        |        x NOME DO PERSONAGEM x        |
+        +{'='*38}+
+        \______________________________________/ 
         """)
 
     name = input("""   
@@ -202,14 +276,13 @@ def characterCreation():
     maxhealth = 200
     attack = 35
     defense = 10
-    speed = 10
     level = 1
     souls = 210
     nSouls = 210
     lucky = 0
     distribuitonPoints = 0
 
-    character = CharacterObject(name, maxhealth, attack, defense, speed, level, souls, nSouls, distribuitonPoints, lucky)
+    character = CharacterObject(name, maxhealth, attack, defense, level, souls, nSouls, distribuitonPoints, lucky)
     os.system('cls')
     return character
     
