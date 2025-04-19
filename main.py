@@ -342,33 +342,160 @@ def gameEvents(target, enemy):
 
 
 #Criação de monstros aleatorios
-def basicMonster(target):
-    maxhealth=random.randint(int(target.maxhealth * 0.5), int(target.maxhealth * 0.75)) #Vida do monstro baseada na vida do personagem
-    attack=random.randint(int(target.attack * 0.5), int(target.attack * 0.75)) #Ataque do monstro baseado no ataque do personagem
-    defense=random.randint(int(target.defense * 0.3), int(target.defense * 0.5)) #Defesa do monstro baseada na defesa do personagem
-    souls=random.randint(int(target.nSouls / 5), int(target.nSouls / 3)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
-    extra_defense = 0
-    defense_turn = 0
+def basicMonster():
 
-    monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn)
-    return monster
+    generator = random.choice(["Slime","Goblin","Troll","Orc","Rato"])
+    if generator == "Rato":
 
-def MediumMonster(target):
-    maxhealth=random.randint(int(target.maxhealth * 2), int(target.maxhealth * 2.5)) #Vida do monstro baseada na vida do personagem
-    attack=random.randint(int(target.attack * 0.65), int(target.attack * 0.90)) #Ataque do monstro baseado no ataque do personagem
-    defense=random.randint(int(target.defense * 0.6), int(target.defense * 0.8)) #Defesa do monstro baseada na defesa do personagem
-    souls=random.randint(target.nSouls, (target.nSouls * 2)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
-    extra_defense = 0
-    defense_turn = 0
+        type = "Rato"
+        maxhealth=60 #Vida do monstro
+        attack=16 #Ataque do monstro
+        defense=0 #Defesa do monstro
+        souls=120 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
 
-    monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn)
-    return monster
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Orc":
+
+        type = "Orc"
+        maxhealth=90 #Vida do monstro
+        attack=28 #Ataque do monstro
+        defense=2 #Defesa do monstro
+        souls=240 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Troll":
+        type = "Troll"
+        maxhealth=120 #Vida do monstro
+        attack=16 #Ataque do monstro
+        defense=4 #Defesa do monstro
+        souls=290 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Goblin":
+        type = "Goblin"
+        maxhealth=90 #Vida do monstro
+        attack=15 #Ataque do monstro
+        defense=4 #Defesa do monstro
+        souls=140 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Slime":
+        type = "Slime"
+        maxhealth=150 #Vida do monstro
+        attack=13 #Ataque do monstro
+        defense=15 #Defesa do monstro
+        souls=260 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+
+def MediumMonster():
+    
+    generator = random.choice(["Hydra", "Dragon Lord", "Cyclops", "Ghoul", "Blue Djinn", "Giant Spider", "Black Demon"])
+    if generator == "Hydra":
+        type = "Hydra"
+        maxhealth=325
+        attack=32
+        defense=12
+        souls=640
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Dragon Lord":
+        type = "Dragon Lord"
+        maxhealth=190
+        attack=22
+        defense=10
+        souls=690
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Cyclops":
+        type = "Cyclops"
+        maxhealth=245
+        attack=26
+        defense=16
+        souls=710
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Ghoul":
+        type = "Ghoul"
+        maxhealth=210
+        attack=14
+        defense=13
+        souls=610
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Blue Djinn":
+        type = "Blue Djinn"
+        maxhealth=450
+        attack=9
+        defense=8
+        souls=805
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Giant Spider":
+        type = "Giant Spider"
+        maxhealth=90
+        attack=24
+        defense=11
+        souls=745
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Black Demon":
+        type = "Black Demon"
+        maxhealth=165
+        attack=18
+        defense=12
+        souls=710
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
 
 def BossMonter(target):
     maxhealth=random.randint(int(target.maxhealth * 4), int(target.maxhealth * 5)) #Vida do monstro baseada na vida do personagem
     attack=random.randint(int(target.attack * 1.30), int(target.attack * 1.8)) #Ataque do monstro baseado no ataque do personagem
     defense=random.randint(int(target.defense * 1.2), int(target.defense * 1.6)) #Defesa do monstro baseada na defesa do personagem
-    souls=random.randint(target.nSouls, (target.nSouls * 4)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
+    souls=random.randint(int(target.nSouls), int(target.nSouls * 4)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
     extra_defense = 0
     defense_turn = 0
 
@@ -379,7 +506,6 @@ def BossMonter(target):
 def battleSystem():
 
     character = characterObject.characterCreation()
-    monster = basicMonster(character)
     
     monsterkilled = 0
     tower_level = 1
@@ -396,7 +522,7 @@ def battleSystem():
         
 
         while tower_level != semigod_level and tower_level != boss_level:
-            monster = basicMonster(character)
+            monster = basicMonster()
             actual_event = gameEvents(character, monster)
             print(actual_event)
             character.action_display(monster, actual_event, monsterkilled)
@@ -410,7 +536,7 @@ def battleSystem():
           Um monstro nivel \033[95mSEMI-DEUS\033[0m apareceu!
           enfrete-o e colete suas recompensas
 """)
-            monster = BossMonter(character)
+            monster = MediumMonster()
             actual_event = gameEvents(character, monster)
             print(actual_event)
             character.action_display(monster, actual_event, monsterkilled)
@@ -425,7 +551,7 @@ def battleSystem():
           Um monstro nivel DEUS apareceu!
           enfrete-o e receba suas recompensas
 """)
-            monster = basicMonster(character)
+            monster = basicMonster()
             actual_event = gameEvents(character, monster)
             print(actual_event)
             character.action_display(monster, actual_event, monsterkilled)

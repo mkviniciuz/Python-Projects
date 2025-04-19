@@ -6,11 +6,11 @@ class CharacterObject():
 
     def __init__(self, name, maxhealth, attack, defense, level, souls, nSouls, distribuitonPoints, lucky):
         self.name = name #Nome do personagem
-        self.maxhealth = maxhealth #Vida maxima do personagem
+        self.level = level #Nivel do personagem
+        self.maxhealth = maxhealth#Vida maxima do personagem
         self.actual_health = maxhealth
         self.attack = attack #Ataque do personagem
         self.defense = defense #Defesa do personagem
-        self.level = level #Nivel do personagem
         self.souls = souls #Quantidade de almas que o personagem possui
         self.nSouls = nSouls #Quantidade de almas necessarias para upar
         self.distribuitonPoints = distribuitonPoints
@@ -29,40 +29,66 @@ class CharacterObject():
             try:
                 print(f"""          
                     
-                        {self.name} |-------------------x
-                        Você possui {self.souls} almas
-                        Você precisa de {self.nSouls} almas para upar!
-                    
-                    """)
+            +{'='*38}+
+            |          x LEVEL UPGRADE x           |
+            +{'='*38}+
+            \______________________________________/ 
                 
-                print("Deseja upar de nivel?")
-                print("1 - Sim / 2 - Não")
-                choose = int(input("Escolha: "))
+              Você possui {int(self.souls)} almas
+              Você precisa de {int(self.nSouls)} almas para upar!
+                    
+              Deseja subir de nivel?
+              [1] Sim / [2] Não
+                    """)
+                choose = int(input("              Escolha: "))
+                
                 if choose == 1:
                     if self.souls >= self.nSouls: #Verifica se a quantidade de almas é suficiente
                         self.level += 1 #Aumenta o nivel do personagem
                         self.souls -= self.nSouls #Diminui a quantidade de almas
                         self.nSouls += (self.nSouls * 0.15) + (self.level * 10) #Aumenta a quantidade de almas necessarias para upar
                         self.distribuitonPoints += 1 #Aumenta a quantidade de pontos de distribuição
-
+                        os.system('cls')
                         
-                        #Exibir informações do personagem apos upar!
                         print(f"""
-                        {self.name} |-------------------x
-                        Você upou de nivel!
-                        Seu nivel atual é {self.level }LvL
-                        Você possui {self.souls} almas
-                        Você precisa de {int(self.nSouls)} almas para upar!
-                        Você possui {self.distribuitonPoints} pontos de distribuição
-                        """) 
-                        continue
+                              
+              Qual Status deseja Aprimorar?
+                              
+              [1] Vida   | {self.maxhealth} HP   -> ({self.maxhealth + 25})  | +25 HP ❤️
+              [2] Ataque | {self.attack} ATAQUE  -> ({self.attack + 10}) | +10 ATQ ⚔️
+              [3] Defesa | {self.defense} DEFESA -> ({self.defense + 2})  | +2 DEF 🛡️
+                
+                            """)
+                        choose = int(input("              Escolha: "))
+
+                        if choose == 1:
+                            self.maxhealth += 25
+                            self.actual_health = self.maxhealth
+                            os.system('cls')
+                            continue
+
+                        elif choose == 2:
+                            self.attack += 10
+                            os.system('cls')
+                            continue
+
+                        elif choose == 3:
+                            self.defense += 2
+                            os.system('cls')
+                            continue
 
 
                     else:
+                        os.system('cls')
                         print("Você não possui almas suficientes para upar!")
                         break
 
+                else:
+                    os.system('cls')
+                    break
+
             except ValueError:
+                os.system('cls')
                 print("Valor invalido")
 
     def show_status(self, actual_event, kills):
@@ -106,33 +132,39 @@ class CharacterObject():
           [{'█' * bar}{'_' * (20 - bar)}] {target.actual_health}/{target.maxhealth}
                 
                   """)
+        self.extra_remove()
         sleeper = input("")
         os.system('cls')
 
     def action_defense(self):
-        self.extra_defense = self.defense*0.5
-        self.defense_turn = 2
-        self.defense += self.extra_defense
-        print(f"""
-          [HEROI]
-          Você defendeu-se!
-          Defesa aumentada para {self.defense} DEF!
-          (Duração de {self.defense_turn} Turnos)
+        if self.defense_turn > 0:
+            print(f"""
+          [ERROR]
+          Efeito de 🛡️  {self.defense} [DEFESA] já esta aplicado
+                Restam {self.defense_turn} turnos restantes
         """)
-        sleeper = input("")
-        os.system('cls')
+            sleeper = input("")
+            os.system('cls')
+        
+        else:
+            self.extra_defense = self.defense*0.5
+            self.defense_turn = 2
+            self.defense += self.extra_defense
+            print(f"""
+            [HEROI]
+            Você defendeu-se!
+            Defesa aumentada para {self.defense} DEF!
+            (Duração de {self.defense_turn} Turnos)
+            """)
+            sleeper = input("")
+            os.system('cls')
     
     def extra_remove(self):
 
-        # REDUÇÃO DOS PONTOS DE DEFESA EXTRA
-        self.defense -= self.extra_defense
-        self.defense_turn -= 1
+        self.defense_turn = max(0, self.defense_turn - 1)
         if self.defense_turn == 0:
-            print(f"""
-                  
-                  Pontos de DEFESA EXTRA reduzidos!
-                  
-                  """)
+            self.defense -= self.extra_defense
+            self.extra_defense = 0
             
     def action_display(self, target, actual_event, kills):
         rounds = 1
@@ -224,35 +256,8 @@ class CharacterObject():
 
 #Função para criar o personagem
 def characterCreation():
-    print("""
-
-        SEJA
-
-""")
-    time.sleep(0.3)
-    os.system('cls')
-    print("""
-
-        SEJA BEM
-
-""")
-    time.sleep(0.6)
-    os.system('cls')
-    print("""
-
-        SEJA BEM VINDO
-
-""")
-    time.sleep(2)
-    os.system('cls')
-    print("""
-
-              A
-
-""")
-    time.sleep(2)
-    os.system('cls')
-    print("""
+    mensagens = [
+    ("""
         ______                                        _     
         | ___ \                                      | |    
         | |_/ /___   __ _ _   _  ___  ___  ___  _   _| |___ 
@@ -261,9 +266,13 @@ def characterCreation():
         \_| \_\___/ \__, |\__,_|\___||___/\___/ \__,_|_|___/
                     __/  |                                  
                     |___/
-          """)
-    time.sleep(3)
-    os.system('cls')
+    """, 1.5)
+]
+
+    for texto, pausa in mensagens:
+        print(f"\n{texto}\n")
+        time.sleep(pausa)
+        os.system('cls')
     print(f"""
         +{'='*38}+
         |        x NOME DO PERSONAGEM x        |

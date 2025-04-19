@@ -4,8 +4,10 @@ import os
 #Classe para criar monstros
 class monsterType():
 
-    def __init__(self, maxhealth, attack, defense, souls, extra_defense, defense_turn):
+    def __init__(self, maxhealth, attack, defense, souls, extra_defense, defense_turn, type):
 
+
+        self.type = type
         self.maxhealth = maxhealth
         self.actual_health = maxhealth
         self.attack = attack
@@ -23,6 +25,8 @@ class monsterType():
       +{'='*38}+
       \______________________________________/
 
+      
+          Tipo: {self.type}
       🖤 HP: [{'█' * bar}{'░' * (20 - bar)}] {self.actual_health}/{self.maxhealth}
       ⚔️  Ataque: {self.attack:<27}
       🛡️  Defesa: {self.defense:<27}
@@ -33,14 +37,18 @@ class monsterType():
         os.system('cls')
 
     def monsterAttack(self, target):
-        target.actual_health -= max(0, self.attack - target.defense)
+        target.actual_health -= max(0, self.attack - target.defense*0.2)
+        bar = int((target.actual_health / target.maxhealth) * 20)
         print(f"""
           [MONSTRO]
           O monstro atacou!
-          Você sofreu {max(0, self.attack - target.defense)} de dano  ({self.attack} Dano base - {target.defense} Sua DEF)! | Sua vida |{"█"*int((target.actual_health/10))}| {target.actual_health}/{target.maxhealth}
-                """)
-        if self.defense_turn > 0:
-            self.monsterExtraRemoves()
+          Você sofreu 🗡️  {int(self.attack - (target.defense*0.2))} de dano!
+          
+          Sua vida:
+          [{'█' * bar}{'_' * (20 - bar)}] {target.actual_health}/{target.maxhealth}
+                
+              """)
+        self.monsterExtraRemoves()
         sleeper = input("")
         os.system('cls')
         
