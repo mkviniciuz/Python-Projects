@@ -18,7 +18,7 @@ class CharacterObject():
 
 
 
-
+        self.critical = 0
         self.extra_defense = 0
         self.defense_turn = 0
         self.eventHistory = []

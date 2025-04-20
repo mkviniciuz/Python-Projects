@@ -10,8 +10,6 @@ os.system('cls')
 
 def gameEvents(target, enemy):
 
-    target
-    enemy
     
     def eventSouls(target):
         character_luckyEffect = int(target.lucky * 0.15) #Efeito da sorte do personagem
@@ -341,7 +339,7 @@ def gameEvents(target, enemy):
         return selectedEvent(enemy)
 
 
-#Criação de monstros aleatorios
+#Criação de monstros aleatorios 
 def basicMonster():
 
     generator = random.choice(["Slime","Goblin","Troll","Orc","Rato"])
@@ -491,7 +489,8 @@ def MediumMonster():
         monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
         return monster
 
-def BossMonter(target):
+def BossMonster(target):
+    type = "Deus"
     maxhealth=random.randint(int(target.maxhealth * 4), int(target.maxhealth * 5)) #Vida do monstro baseada na vida do personagem
     attack=random.randint(int(target.attack * 1.30), int(target.attack * 1.8)) #Ataque do monstro baseado no ataque do personagem
     defense=random.randint(int(target.defense * 1.2), int(target.defense * 1.6)) #Defesa do monstro baseada na defesa do personagem
@@ -499,7 +498,7 @@ def BossMonter(target):
     extra_defense = 0
     defense_turn = 0
 
-    monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn)
+    monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
     return monster
 
 
@@ -514,6 +513,8 @@ def battleSystem():
 
     boss_level = 10
     semigod_level = 3
+    cards_shop = 9
+    fight_round = 0
     
 
 
@@ -547,11 +548,11 @@ def battleSystem():
 
         if tower_level == boss_level:
             print(f"""
-          \033[103m[EVENTO]\033[0m
-          Um monstro nivel DEUS apareceu!
+          \033[103m[DEUS]\033[0m
+          Um monstro nivel \033[93mDEUS\033[0m apareceu!
           enfrete-o e receba suas recompensas
 """)
-            monster = basicMonster()
+            monster = BossMonster(character)
             actual_event = gameEvents(character, monster)
             print(actual_event)
             character.action_display(monster, actual_event, monsterkilled)
