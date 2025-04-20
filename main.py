@@ -386,14 +386,14 @@ def cardShopping(character, target, round):
             (Melhorar o ataque não funcionará mais!)
 
             [PERDA]
-            Você sua defesa é reduzida para +(0)DEF Permanentemente
+            Sua defesa é reduzida para +(0)DEF Permanentemente
                 """
         
         character.attack = int(character.maxhealth*0.35)
         character.defense = 0
         return message
 
-    def sentencaFinal( target):
+    def sentencaFinal(target):
         message = f"""
             [GANHO]
             Caso o monstro tenha -20% de VIDA, ele é finalizado
@@ -788,7 +788,6 @@ def battleSystem():
 
     boss_level = 10
     semigod_level = 3
-    cards_shop_level = 9
     fight_round = 0
     
 
@@ -804,11 +803,6 @@ def battleSystem():
             character.action_display(monster, actual_event, monsterkilled)
             tower_level += 1
             monsterkilled += 1
-            
-
-        if tower_level == cards_shop_level:
-                cardShopping(character, monster, fight_round)
-                cards_shop_level += 10
 
         if tower_level == semigod_level:
             print(f"""
@@ -841,6 +835,7 @@ def battleSystem():
             character.action_display(monster, actual_event, monsterkilled)
             tower_level += 1
             boss_level += 10
+            cardShopping(character, monster, fight_round)
 
 
 battleSystem()
