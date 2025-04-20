@@ -17,7 +17,7 @@ class CharacterObject():
         self.lucky = lucky
 
 
-
+        self.deck = []
         self.critical = 0
         self.extra_defense = 0
         self.defense_turn = 0
@@ -108,6 +108,8 @@ class CharacterObject():
         🛡️  Defesa: {self.defense}
         🍀 Sorte: {self.lucky}
         👻 Almas: {int(self.souls)}
+
+        🃏 Deck: {self.deck}
 
         Almas Necessarias: {int(self.nSouls)}
         Pontos para Distribuir: {self.distribuitonPoints}
@@ -289,7 +291,7 @@ def characterCreation():
     souls = 210
     nSouls = 210
     lucky = 0
-    distribuitonPoints = 0
+    distribuitonPoints = 5
 
     character = CharacterObject(name, maxhealth, attack, defense, level, souls, nSouls, distribuitonPoints, lucky)
     os.system('cls')
