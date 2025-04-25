@@ -45,7 +45,7 @@ class monsterType():
           Você sofreu 🗡️  {int(self.attack - (target.defense*0.2))} de dano!
           
           Sua vida:
-          [{'█' * bar}{'_' * (20 - bar)}] {target.actual_health}/{target.maxhealth}
+          [{'█' * bar}{'_' * (20 - bar)}] {int(target.actual_health)}/{target.maxhealth}
                 
               """)
         self.monsterExtraRemoves()
