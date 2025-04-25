@@ -131,7 +131,7 @@ class CharacterObject():
           Você infligiu 🗡️  {int(self.attack - (target.defense*0.2))} de dano!
           
           Vida do monstro:
-          [{'█' * bar}{'_' * (20 - bar)}] {max(0, target.actual_health)}/{target.maxhealth}
+          [{'█' * bar}{'_' * (20 - bar)}] {target.actual_health:.2f}/{target.maxhealth}
                 
                   """)
         self.extra_remove()
