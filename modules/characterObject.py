@@ -123,7 +123,7 @@ class CharacterObject():
         os.system('cls')
 
     def action_attack(self, target):
-        target.actual_health -= max(0, self.attack - target.defense*0.2)
+        target.actual_health = max(0, target.actual_health - (self.attack - target.defense*0.2))
         bar = int((target.actual_health / target.maxhealth) * 20)
         print(f"""
           [HEROI]
@@ -131,7 +131,7 @@ class CharacterObject():
           Você infligiu 🗡️  {int(self.attack - (target.defense*0.2))} de dano!
           
           Vida do monstro:
-          [{'█' * bar}{'_' * (20 - bar)}] {int(target.actual_health)}/{target.maxhealth}
+          [{'█' * bar}{'_' * (20 - bar)}] {max(0, target.actual_health)}/{target.maxhealth}
                 
                   """)
         self.extra_remove()
