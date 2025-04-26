@@ -337,6 +337,7 @@ def gameEvents(target, enemy):
         
     if selectedEvent == eventMonster:
         return selectedEvent(enemy)
+    
 def cardShopping(character, target, round):
 
     def pactoNeorato(character, target):
@@ -491,10 +492,6 @@ def cardShopping(character, target, round):
     deck.append(disposs_cards)
     deck.append(pointsRequimerent)
 
-
-    # FAZER VINCULAÇÃO COM ATRIBUTO DO PERSONAGEM
-    # FAZER VINCULAÇÃO COM PONTOS DO PERSONAGEM
-
     while True:
         try:
             print(f"""
@@ -607,6 +604,22 @@ def cardShopping(character, target, round):
                         os.system('cls')
             
             else:
+
+                # Após a compra d
+                for check in character.deck:
+                    if check == "Pacto Neorato":
+                        character.towerEffects["pactoNeorato"] = True
+                        character.roundEffects["pactoNeorato"] = True
+                    elif check == "Ultimo Suspiro":
+                        character.towerEffects["ultimoSuspiro"] = True
+                        character.roundEffects["ultimoSuspiro"] = True
+                    elif check == "Trato Sanguinario":
+                        character.towerEffects["tratoSanguinario"] = True
+                        character.roundEffects["tratoSanguinario"] = True
+                    elif check == "Sentença Final":
+                        character.towerEffects["sentencaFinal"] = True
+                        character.roundEffects["sentencaFinal"] = True
+                        
                 os.system('cls')
                 break
         except ValueError:
@@ -677,6 +690,7 @@ def basicMonster():
         return monster
 
 def MediumMonster():
+
     
     generator = random.choice(["Hydra", "Dragon Lord", "Cyclops", "Ghoul", "Blue Djinn", "Giant Spider", "Black Demon"])
     if generator == "Hydra":
@@ -764,20 +778,59 @@ def MediumMonster():
         monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
         return monster
 
-def BossMonster(target):
-    type = "Deus"
-    maxhealth=random.randint(int(target.maxhealth * 4), int(target.maxhealth * 5)) #Vida do monstro baseada na vida do personagem
-    attack=random.randint(int(target.attack * 1.30), int(target.attack * 1.8)) #Ataque do monstro baseado no ataque do personagem
-    defense=random.randint(int(target.defense * 1.2), int(target.defense * 1.6)) #Defesa do monstro baseada na defesa do personagem
-    souls=random.randint(int(target.nSouls), int(target.nSouls * 4)) #Almas que o monstro dropa baseado na quantidade de almas necessarias para upar
-    extra_defense = 0
-    defense_turn = 0
+def BossMonster():
 
-    monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
-    return monster
+    #PREFIXOS SEGUIDOS DO NOME DO MONSTRO NIVEL DEUS
+    prefix = random.choice(["[Deus do Destino]", "[Deus do Caos]", "[Deus da Ruina]"])
+
+    start = random.choice(["Syl","Zor","Ter","Ari","Zar","Gor","Kra", "Ka", "As"])
+    middle = random.choice(["go","thar","thul","lot","kam","mi","dra", "la", "ke"])
+    end = random.choice(["ylg","let", "phyr", "jar", "gsar", "iuyl", "jonl", "meth", "ladd"])
 
 
-def battleSystem():
+    boss_name = f"{start}{middle}{end} {prefix}"
+
+    if prefix == "[Deus do Destino]":
+        type = boss_name
+        maxhealth=1000
+        attack=64
+        defense=45
+        souls=2480
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    
+    elif prefix == "[Deus do Caos]":
+        type = boss_name
+        maxhealth=2000
+        attack=32
+        defense=20
+        souls=2480
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    
+    elif prefix == "[Deus da Ruina]":
+        type = boss_name
+        maxhealth=980
+        attack=55
+        defense=50
+        souls=2145
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monstersCreation.monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+
+
+def game():
 
     character = characterObject.characterCreation()
     
@@ -790,8 +843,6 @@ def battleSystem():
     semigod_level = 3
     fight_round = 0
     
-
-
     while playing:
 
         
@@ -829,7 +880,7 @@ def battleSystem():
           Um monstro nivel \033[93mDEUS\033[0m apareceu!
           enfrete-o e receba suas recompensas
 """)
-            monster = basicMonster()
+            monster = BossMonster()
             actual_event = gameEvents(character, monster)
             print(actual_event)
             character.action_display(monster, actual_event, monsterkilled)
@@ -838,7 +889,7 @@ def battleSystem():
             cardShopping(character, monster, fight_round)
 
 
-battleSystem()
+game()
 
 
 def main():

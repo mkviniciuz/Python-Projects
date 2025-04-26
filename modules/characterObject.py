@@ -23,6 +23,20 @@ class CharacterObject():
         self.defense_turn = 0
         self.eventHistory = []
 
+        self.towerEffects = {
+            "pactoNeorato": False,
+            "ultimoSuspiro": False,
+            "tratoSanguinario": False,
+            "sentencaFinal": False
+        }
+
+        self.roundEffects = {
+            "pactoNeorato": False,
+            "ultimoSuspiro": False,
+            "tratoSanguinario": False,
+            "sentencaFinal": False
+        }
+
     def level_upgrade(self):
     
         while True:    
