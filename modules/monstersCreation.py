@@ -1,5 +1,5 @@
 import os
-
+import random
 
 #Classe para criar monstros
 class monsterType():
@@ -80,3 +80,208 @@ class monsterType():
             self.extra_defense = 0
 
 
+#Criação de monstros aleatorios
+
+# MONSTRO DE NIVEL BASICO
+def basicMonster():
+
+    generator = random.choice(["Slime","Goblin","Troll","Orc","Rato"])
+    if generator == "Rato":
+
+        type = "Rato"
+        maxhealth=60 #Vida do monstro
+        attack=16 #Ataque do monstro
+        defense=0 #Defesa do monstro
+        souls=120 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Orc":
+
+        type = "Orc"
+        maxhealth=90 #Vida do monstro
+        attack=28 #Ataque do monstro
+        defense=2 #Defesa do monstro
+        souls=240 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Troll":
+        type = "Troll"
+        maxhealth=120 #Vida do monstro
+        attack=16 #Ataque do monstro
+        defense=4 #Defesa do monstro
+        souls=290 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Goblin":
+        type = "Goblin"
+        maxhealth=90 #Vida do monstro
+        attack=15 #Ataque do monstro
+        defense=4 #Defesa do monstro
+        souls=140 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Slime":
+        type = "Slime"
+        maxhealth=150 #Vida do monstro
+        attack=13 #Ataque do monstro
+        defense=15 #Defesa do monstro
+        souls=260 #Almas que o monstro dropa
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+
+# MONSTRO DE NIVEL MEDIO
+def MediumMonster():
+
+    
+    generator = random.choice(["Hydra", "Dragon Lord", "Cyclops", "Ghoul", "Blue Djinn", "Giant Spider", "Black Demon"])
+    if generator == "Hydra":
+        type = "Hydra"
+        maxhealth=325
+        attack=32
+        defense=12
+        souls=640
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Dragon Lord":
+        type = "Dragon Lord"
+        maxhealth=190
+        attack=22
+        defense=10
+        souls=690
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Cyclops":
+        type = "Cyclops"
+        maxhealth=245
+        attack=26
+        defense=16
+        souls=710
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Ghoul":
+        type = "Ghoul"
+        maxhealth=210
+        attack=14
+        defense=13
+        souls=610
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Blue Djinn":
+        type = "Blue Djinn"
+        maxhealth=450
+        attack=9
+        defense=8
+        souls=805
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Giant Spider":
+        type = "Giant Spider"
+        maxhealth=90
+        attack=24
+        defense=11
+        souls=745
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    elif generator == "Black Demon":
+        type = "Black Demon"
+        maxhealth=165
+        attack=18
+        defense=12
+        souls=710
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+
+# MONSTRO DE NIVEL DEUS
+def BossMonster():
+
+    #PREFIXOS SEGUIDOS DO NOME DO MONSTRO NIVEL DEUS
+    prefix = random.choice(["[Deus do Destino]", "[Deus do Caos]", "[Deus da Ruina]"])
+
+    start = random.choice(["Syl","Zor","Ter","Ari","Zar","Gor","Kra", "Ka", "As"])
+    middle = random.choice(["go","thar","thul","lot","kam","mi","dra", "la", "ke"])
+    end = random.choice(["ylg","let", "phyr", "jar", "gsar", "iuyl", "jonl", "meth", "ladd"])
+
+
+    boss_name = f"{start}{middle}{end} {prefix}"
+
+    if prefix == "[Deus do Destino]":
+        type = boss_name
+        maxhealth=1000
+        attack=64
+        defense=45
+        souls=2480
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    
+    elif prefix == "[Deus do Caos]":
+        type = boss_name
+        maxhealth=2000
+        attack=32
+        defense=20
+        souls=2480
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster
+    
+    elif prefix == "[Deus da Ruina]":
+        type = boss_name
+        maxhealth=980
+        attack=55
+        defense=50
+        souls=2145
+        
+        extra_defense = 0
+        defense_turn = 0
+
+        monster = monsterType(maxhealth, attack, defense, souls, extra_defense, defense_turn, type)
+        return monster

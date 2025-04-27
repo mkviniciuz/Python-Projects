@@ -1,6 +1,54 @@
 {
-    "VIDA": ["ultimoSuspiro", "pactoNeorato"],
-    "ATAQUE": ["tratoSanguinario", "sentencaFinal"],
-    "DEFESA": {},
-    "SORTE": {}
+    "VIDA": [
+        ["[VIDA] Ultimo suspiro", 15],
+        ["[VIDA] Pacto Neorato", 9],
+        ["[VIDA] Bênção dos Ancestrais", 27],
+        ["[VIDA] Essência Renovada", 32],
+        ["[VIDA] Renascimento Lunar", 40],
+        ["[VIDA] Flor da Vitalidade", 22],
+        ["[VIDA] Lágrima da Fênix", 36],
+        ["[VIDA] Ritual da Cura", 18],
+        ["[VIDA] Sopro da Esperança", 26],
+        ["[VIDA] Vigília dos Antigos", 41],
+        ["[VIDA] Alma Restaurada", 34]
+    ],
+    "ATAQUE": [
+        ["[ATAQUE] Trato sanguinário", 8],
+        ["[ATAQUE] Sentença final", 18],
+        ["[ATAQUE] Lâmina dos Condenados", 44],
+        ["[ATAQUE] Rajada Infernal", 37],
+        ["[ATAQUE] Golpe Carmesim", 25],
+        ["[ATAQUE] Fúria do Dragão", 47],
+        ["[ATAQUE] Tempestade de Lâminas", 42],
+        ["[ATAQUE] Martelo dos Deuses", 39],
+        ["[ATAQUE] Espada do Eclipse", 33],
+        ["[ATAQUE] Chamas Profanas", 30],
+        ["[ATAQUE] Garras da Besta", 28]
+    ],
+    "DEFESA": [
+        ["[DEFESA] Herói defensor", 9],
+        ["[DEFESA] Escudo sagrado", 20],
+        ["[DEFESA] Barreira de Alvorada", 33],
+        ["[DEFESA] Muralha de Ébano", 29],
+        ["[DEFESA] Reflexo Protetor", 24],
+        ["[DEFESA] Armadura de Gaia", 41],
+        ["[DEFESA] Véu da Redenção", 36],
+        ["[DEFESA] Guardião dos Portões", 38],
+        ["[DEFESA] Fortaleza Espiritual", 45],
+        ["[DEFESA] Aegis Eterna", 43],
+        ["[DEFESA] Bastião Celeste", 40]
+    ],
+    "SORTE": [
+        ["[SORTE] Sorte de Mikyealaar", 25],
+        ["[SORTE] Sorte dos Reinos", 16],
+        ["[SORTE] Bênção da Fortuna", 41],
+        ["[SORTE] Dados do Destino", 48],
+        ["[SORTE] Amuleto do Inesperado", 29],
+        ["[SORTE] Olho da Providência", 44],
+        ["[SORTE] Roda dos Sortilégios", 33],
+        ["[SORTE] Canção da Fortuna", 36],
+        ["[SORTE] Corrente da Sorte", 22],
+        ["[SORTE] Trébol do Caos", 31],
+        ["[SORTE] Mão Oculta", 26]
+    ]
 }
