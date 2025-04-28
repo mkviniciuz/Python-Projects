@@ -22,6 +22,8 @@ class CharacterObject():
         self.extra_defense = 0
         self.defense_turn = 0
         self.eventHistory = []
+        self.battleRound = 1
+        self.extra_health = 0
 
         self.towerEffects = {
             "pactoNeorato": False,
@@ -31,11 +33,52 @@ class CharacterObject():
         }
 
         self.roundEffects = {
-            "pactoNeorato": False,
-            "ultimoSuspiro": False,
-            "tratoSanguinario": False,
-            "sentencaFinal": False
-        }
+    "[VIDA] Ultimo suspiro": False,
+    "[VIDA] Pacto Neorato": False,
+    "[VIDA] Bênção dos Ancestrais": False,
+    "[VIDA] Essência Renovada": False,
+    "[VIDA] Renascimento Lunar": False,
+    "[VIDA] Flor da Vitalidade": False,
+    "[VIDA] Lágrima da Fênix": False,
+    "[VIDA] Ritual da Cura": False,
+    "[VIDA] Sopro da Esperança": False,
+    "[VIDA] Vigília dos Antigos": False,
+    "[VIDA] Alma Restaurada": False,
+    "[ATAQUE] Trato sanguinário": False,
+    "[ATAQUE] Sentença final": False,
+    "[ATAQUE] Lâmina dos Condenados": False,
+    "[ATAQUE] Rajada Infernal": False,
+    "[ATAQUE] Golpe Carmesim": False,
+    "[ATAQUE] Fúria do Dragão": False,
+    "[ATAQUE] Tempestade de Lâminas": False,
+    "[ATAQUE] Martelo dos Deuses": False,
+    "[ATAQUE] Espada do Eclipse": False,
+    "[ATAQUE] Chamas Profanas": False,
+    "[ATAQUE] Garras da Besta": False,
+    "[DEFESA] Herói defensor": False,
+    "[DEFESA] Escudo sagrado": False,
+    "[DEFESA] Barreira de Alvorada": False,
+    "[DEFESA] Muralha de Ébano": False,
+    "[DEFESA] Reflexo Protetor": False,
+    "[DEFESA] Armadura de Gaia": False,
+    "[DEFESA] Véu da Redenção": False,
+    "[DEFESA] Guardião dos Portões": False,
+    "[DEFESA] Fortaleza Espiritual": False,
+    "[DEFESA] Aegis Eterna": False,
+    "[DEFESA] Bastião Celeste": False,
+    "[SORTE] Sorte de Mikyealaar": False,
+    "[SORTE] Sorte dos Reinos": False,
+    "[SORTE] Bênção da Fortuna": False,
+    "[SORTE] Dados do Destino": False,
+    "[SORTE] Amuleto do Inesperado": False,
+    "[SORTE] Olho da Providência": False,
+    "[SORTE] Roda dos Sortilégios": False,
+    "[SORTE] Canção da Fortuna": False,
+    "[SORTE] Corrente da Sorte": False,
+    "[SORTE] Trébol do Caos": False,
+    "[SORTE] Mão Oculta": False
+}
+
 
     def level_upgrade(self):
     
@@ -269,6 +312,82 @@ class CharacterObject():
         sleeper = input("")
         os.system('cls')
 
+    def cardEvent(self, target):
+
+            def ultimosuspiro():
+                message = f"""
+                [ULTIMO SUSPIRO]
+                
+                [GANHO]
+                Caso atinja -30% da vida máxima, ganha 2% de vida por turno.
+
+                [PERDA]
+                Todo monstro encontrado tem seu HP aumentado em 10% 
+                """
+
+                if self.actual_health < self.maxhealth*0.30:
+                    self.actual_health += self.maxhealth*0.02
+                
+                if self.battleRound == 1:
+                    target.maxhealth += target.maxhealth*0.10
+                    target.actual_health = target.maxhealth
+
+                return message
+            
+            def pactoneorato():
+                message = f"""
+                [ULTIMO SUSPIRO]
+                
+                [GANHO]
+                A cada andar o portador regenera +5% da vida atual.
+
+                [PERDA]
+                Todo monstro do tipo [Rato] se transforam em [Neoratos],
+                tendo seus status aumentados em x4.
+                """
+
+                if self.battleRound == 1:
+                    self.actual_health += int(self.actual_health*0.05)
+
+                    if target.type == "Rato":
+                        target.type = "Neorato [MUTADO]"
+                        target.maxhealth *= 4
+                        target.actual_health = target.maxhealth
+                        target.attack *= 4
+                        target.defense *= 4
+                        target.souls *= 4
+
+                return message
+            
+            def bencaoancetrais():
+                message = f"""
+                [BENÇÃO DOS ANCESTRAIS]
+                
+                [GANHO]
+                Ganha +2 pontos de vida maxima por rodada.
+                (Resetando após cada batalha contra um monstro nivel Deus)
+
+                [PERDA]
+                Todo monstro do tipo [Rato] se transforam em [Neoratos],
+                tendo seus status aumentados em x4.
+                """
+
+                
+
+                self.maxhealth 
+                
+                if self.battleRound == 1:
+                    self.actual_health += int(self.actual_health*0.05)
+
+                    if target.type == "Rato":
+                        target.type = "Neorato [MUTADO]"
+                        target.maxhealth *= 4
+                        target.actual_health = target.maxhealth
+                        target.attack *= 4
+                        target.defense *= 4
+                        target.souls *= 4
+
+                return message
 
 #Função para criar o personagem
 def characterCreation():

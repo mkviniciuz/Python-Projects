@@ -95,7 +95,7 @@ def cardShopping(character):
     deck.append(disposs_cards)
     deck.append(pointsRequimerent)
 
-    while True:
+    while character.distribuitonPoints > deck[1][0] or character.distribuitonPoints > deck[1][1] or character.distribuitonPoints > deck[1][2]:
         try:
             print(f"""
     +{'='*51}+
@@ -211,23 +211,19 @@ def cardShopping(character):
 
                 # Após a compra d
                 for check in character.deck:
-                    if check == "Pacto Neorato":
-                        character.towerEffects["pactoNeorato"] = True
-                        character.roundEffects["pactoNeorato"] = True
-                    elif check == "Ultimo Suspiro":
-                        character.towerEffects["ultimoSuspiro"] = True
-                        character.roundEffects["ultimoSuspiro"] = True
-                    elif check == "Trato Sanguinario":
-                        character.towerEffects["tratoSanguinario"] = True
-                        character.roundEffects["tratoSanguinario"] = True
-                    elif check == "Sentença Final":
-                        character.towerEffects["sentencaFinal"] = True
-                        character.roundEffects["sentencaFinal"] = True
+                    if check in character.roundEffects:
+                        character.roundEffects[check] = True
+                    else:
+                        character.roundEffects[check] = False
                         
                 os.system('cls')
                 break
         except ValueError:
             print("Algo deu errado!")
+    
+    print(f"""<-- [ENCERRADO] Card Shopping -->""")
+    sleeper = input("")
+    os.system('cls')
 
 def gameEvents(target, enemy):
 
